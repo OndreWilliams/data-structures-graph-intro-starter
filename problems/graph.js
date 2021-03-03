@@ -41,7 +41,24 @@ class Graph {
   }
 
   breadthFirstTraversal(startingVertex) {
-    // Code goes here ...
+      let queue = [startingVertex];
+      let result = [];
+      let visited = new Set();
+
+      while(queue.length >= 1){
+          let currentVertex = queue.shift();
+          result.push(currentVertex);
+          visited.add(currentVertex);
+          if(this.adjList[currentVertex]){
+              this.adjList[currentVertex].forEach(neighbor => {
+                if(!visited.has(neighbor)){
+                    visited.add(neighbor);
+                    queue.push(neighbor);
+                }
+              });
+          }
+      }
+      return result;
   }
 
   depthFirstTraversalIterative(startingVertex) {
