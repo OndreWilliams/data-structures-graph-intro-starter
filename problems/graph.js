@@ -1,4 +1,4 @@
-
+// Git add
 class Graph {
   constructor() {
     // Code goes here ...
@@ -33,12 +33,3 @@ class Graph {
 module.exports = {
   Graph
 };
-
-
-
-
-
-
-
-
-
