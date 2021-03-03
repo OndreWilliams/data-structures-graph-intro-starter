@@ -121,7 +121,19 @@ class Graph {
     return result;
   }
   depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
-    // Code goes here ...
+    if(visited.has(startingVertex))
+        return vertices;
+    vertices.push(startingVertex);
+    visited.add(startingVertex);
+
+    for(let i = this.adjList[startingVertex].length - 1; i >= 0; i--){
+        this.depthFirstTraversalRecursive(this.adjList[startingVertex][i], visited, vertices);
+    }
+
+    // this.adjList[startingVertex].forEach(neighbor => {
+    //     this.depthFirstTraversalRecursive(neighbor, visited, )
+    // })
+    return vertices;
   }
 
 }
