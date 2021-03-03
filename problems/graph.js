@@ -1,19 +1,43 @@
 // Git add
 class Graph {
   constructor() {
-    // Code goes here ...
+    this.adjList = {};
   }
 
   addVertex(vertex) {
-    // Code goes here ...
+    if (!this.adjList[vertex]){
+      this.adjList[vertex] = [];
+    }
+    else {
+      return null;
+    }
   }
 
   addEdges(srcValue, destValue) {
-    // Code goes here ...
+    if (!this.adjList[srcValue]){
+      this.adjList[srcValue] = [];
+    }
+    if (!this.adjList[destValue]){
+      this.adjList[destValue] = [];
+    }
+
+    if (!this.adjList[srcValue].includes(destValue)){
+      this.adjList[srcValue].push(destValue);
+    }
+    if (!this.adjList[destValue].includes(srcValue)){
+      this.adjList[destValue].push(srcValue);
+    }
   }
 
   buildGraph(edges) {
-    // Code goes here ...
+    let newGraph = new Graph();
+    console.edges;
+    edges.forEach(element => {
+      newGraph.addEdges(element[0], element[1]);
+    })
+
+
+    return newGraph.adjList;
   }
 
   breadthFirstTraversal(startingVertex) {
@@ -29,6 +53,11 @@ class Graph {
   }
 
 }
+
+// let testGraph = new Graph();
+// testGraph.addEdges('f', 'a')
+// //expect { 'f': ['a'], 'a': ['f'] }
+// console.log(testGraph);
 
 module.exports = {
   Graph
